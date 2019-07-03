@@ -1,0 +1,2 @@
+matplotlib==3.1.0
+eviltransform==0.1.1
