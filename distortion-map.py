@@ -42,6 +42,8 @@ for utm_x in range(0, 8000000, 100000):
 
 basemap.drawmapboundary(fill_color='#000000')
 basemap.fillcontinents(color='#444444', lake_color='None')
+basemap.drawmeridians(range(0, 171, 5))
+basemap.drawparallels(range(0, 81, 5))
 basemap.drawcountries(linewidth=1, zorder=11)
 
 quiver_ref = basemap.quiver(
