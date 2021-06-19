@@ -5,7 +5,7 @@ from geopy.distance import distance
 csv_filename = 'empirical-data.csv'
 with open(csv_filename, newline='') as csv_file:
     csv_reader = csv.DictReader(csv_file, delimiter=',')
-    print('{:<13s}{:<18s}{:<21s}{:<9s}'.format(
+    print('{:<13s}{:<18s}{:<18s}{:<9s}'.format(
         'City', 'My Sample', 'EvilTransform', 'Difference'))
     for row in csv_reader:
 
@@ -24,7 +24,7 @@ with open(csv_filename, newline='') as csv_file:
         empirical_eviltrans_diff = distance(eviltrans_coord, empirical_coord).meters
 
         print(
-            '{:<13s}{:<6.2f} metres     {:<6.2f} metres       {:>6.2f} metres'
+            '{:<13s}{:<6.2f} metres     {:<6.2f} metres    {:>6.2f} metres'
             .format(
                 row['City'],
                 wgs84_empirical_diff,
