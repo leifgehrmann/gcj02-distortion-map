@@ -5,6 +5,8 @@ from geopy.distance import distance
 csv_filename = 'empirical-data.csv'
 with open(csv_filename, newline='') as csv_file:
     csv_reader = csv.DictReader(csv_file, delimiter=',')
+    print('{:<13s}{:<18s}{:<21s}{:<9s}'.format(
+        'City', 'My Sample', 'EvilTransform', 'Difference'))
     for row in csv_reader:
 
         # Skip provinces that do not use GCJ-02 on Google Maps
@@ -17,6 +19,16 @@ with open(csv_filename, newline='') as csv_file:
         eviltrans_coord = eviltransform.wgs2gcj(wgs84_coord[0], wgs84_coord[1])
 
         # Calculate distance between eviltransform and my sampled coordinate
-        d = distance(eviltrans_coord, empirical_coord).meters
+        wgs84_empirical_diff = distance(wgs84_coord, empirical_coord).meters
+        wgs84_eviltrans_diff = distance(wgs84_coord, eviltrans_coord).meters
+        empirical_eviltrans_diff = distance(eviltrans_coord, empirical_coord).meters
 
-        print((row['City'] + ':').ljust(15) + str(d) + ' metres')
+        print(
+            '{:<13s}{:<6.2f} metres     {:<6.2f} metres       {:>6.2f} metres'
+            .format(
+                row['City'],
+                wgs84_empirical_diff,
+                wgs84_eviltrans_diff,
+                empirical_eviltrans_diff
+            )
+        )
