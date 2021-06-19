@@ -88,6 +88,10 @@ pip install -r requirements.txt
 pip install https://github.com/matplotlib/basemap/archive/master.zip
 ```
 
+**Update 2021:** It appears basemap does not work on python 3.9, so installing
+the non-pip-able dependencies is broken. This means the `distortion-map.py`
+script no longer works. Ideally basemap should be replaced with cartopy.
+
 ## To run
 
 ```
